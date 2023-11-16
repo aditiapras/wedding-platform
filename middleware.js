@@ -19,16 +19,23 @@ export default async function middleware(req) {
   }`;
 
   if (hostname == `dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
-    // const session = await getToken({ req });
-    return NextResponse.rewrite(new URL(`/dashboard/${path}`, req.url));
+    const session = await getToken({ req });
+    // if (!session) {
+    //   return NextResponse.redirect(`http://localhost:3000/login`);
+    // }
+    return NextResponse.rewrite(
+      new URL(`/dashboard${path === "/" ? "" : path}`, req.url)
+    );
   }
 
   if (
     hostname === "localhost:3000" ||
     hostname === process.env.NEXT_PUBLIC_ROOT_DOMAIN
   ) {
-    return NextResponse.rewrite(new URL(`/${path}`, req.url));
+    return NextResponse.rewrite(
+      new URL(`/app${path === "/" ? "" : path}`, req.url)
+    );
   }
 
-  return NextResponse.rewrite(new URL(`/${hostname})${path}`, req.url));
+  return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url));
 }
