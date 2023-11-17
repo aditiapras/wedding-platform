@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { Eye } from "lucide-react";
 import RegisterForm from "./register-form";
 
 export default function Page() {

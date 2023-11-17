@@ -33,8 +33,8 @@ export default function Page() {
           </p>
         </div>
         <div className="w-1/2 flex gap-2 items-center justify-end">
-          <Flower className="text-background" size={50} />
-          <p className="text-3xl font-medium text-background">lettre</p>
+          {/* <Flower className="text-background" size={50} /> */}
+          {/* <p className="text-3xl font-medium text-background">lettre</p> */}
         </div>
       </section>
     </main>

@@ -1,28 +1,42 @@
 "use client";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { register } from "@/lib/actions";
-import RegisterButton from "./register-button";
+import { registerUser } from "@/lib/actions";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(true);
-  const [passwordMatch, setPasswordMatch] = useState(false);
   const [passwordLength, setPasswordLength] = useState(false);
+  const [passwordMatch, setPasswordMatch] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [disabled, setDisabled] = useState(false);
+  const router = useRouter();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const body = {
-      email,
-      password,
-    };
-    setDisabled(true);
-    setTimeout(() => {
-      register(body);
-      setDisabled(false);
-    }, 2000);
+    if (passwordLength && passwordMatch === password) {
+      setDisabled(true);
+      setTimeout(async () => {
+        const res = await registerUser({
+          email,
+          password,
+        });
+        console.log(res);
+        if (res.isRegistered) {
+          setEmail("");
+          setPassword("");
+          setPasswordMatch("");
+          router.push(`/account-verification?token=`);
+        } else {
+          toast.error("User with this email already exists");
+        }
+        setDisabled(false);
+      }, 2000);
+    } else {
+      toast.error("Password must be at least 8 characters");
+    }
   };
 
   return (
@@ -100,14 +114,14 @@ export default function RegisterForm() {
           <p className="text-red-400 text-xs">Password did not match</p>
         )}
       </div>
+
       <button
         type="submit"
         disabled={disabled}
-        className="rounded-md text-sm px-4 py-2 bg-zinc-600 text-white font-medium hover:bg-zinc-700 mt-5 transition-all duration-200"
+        className="rounded-md text-sm px-4 py-2 bg-zinc-600 text-white font-medium hover:bg-zinc-700 mt-5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Create account
+        {disabled ? "Creating your account" : "Create account"}
       </button>
-      {/* <RegisterButton /> */}
     </form>
   );
 }
