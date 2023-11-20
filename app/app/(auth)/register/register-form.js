@@ -11,6 +11,7 @@ export default function RegisterForm() {
   const [passwordMatch, setPasswordMatch] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [disabled, setDisabled] = useState(false);
   const router = useRouter();
 
@@ -22,13 +23,14 @@ export default function RegisterForm() {
       setTimeout(async () => {
         const res = await registerUser({
           email,
+          username,
           password,
         });
         if (res.isRegistered) {
           setEmail("");
           setPassword("");
           setPasswordMatch("");
-          router.push(`/account-verification?token=${res.token}`);
+          router.push(`/account-verification?section=register`);
         } else {
           toast.error("User with this email already exists");
         }
@@ -56,6 +58,25 @@ export default function RegisterForm() {
           placeholder="Enter your email"
           onChange={(e) => {
             setEmail(e.target.value);
+          }}
+          className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 focus-visible:shadow focus-visible:shadow-blue-400"
+        />
+      </div>
+      <div className="grid gap-2">
+        <label
+          htmlFor="username"
+          className="text-sm font-semibold text-background"
+        >
+          Full Name
+        </label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          required
+          placeholder="Enter your name"
+          onChange={(e) => {
+            setUsername(e.target.value);
           }}
           className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 focus-visible:shadow focus-visible:shadow-blue-400"
         />
