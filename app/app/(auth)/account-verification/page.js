@@ -7,7 +7,7 @@ export default function AccountVerify() {
         Account verification
       </p>
       <p className="text-sm text-zinc-400">
-        We&apos;ve sent an verification link to your email. Please check your
+        We&apos;ve sent a verification link to your email. Please check your
         inbox.
       </p>
     </main>

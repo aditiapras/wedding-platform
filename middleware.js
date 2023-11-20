@@ -20,11 +20,22 @@ export default async function middleware(req) {
 
   if (hostname == `dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
     const session = await getToken({ req });
-    // if (!session) {
-    //   return NextResponse.redirect(`http://localhost:3000/login`);
-    // }
+    if (!session && path === "/") {
+      return NextResponse.rewrite(new URL(`/app/login`, req.url));
+    } else if (session && path === "/login") {
+      return NextResponse.redirect(new URL("/", req.url));
+    } else if (session && path === "/register") {
+      return NextResponse.redirect(new URL(`/`, req.url));
+    } else if (session && path === "/forgot-password") {
+      return NextResponse.redirect(new URL(`/`, req.url));
+    } else if (session && path === "/reset-password") {
+      return NextResponse.redirect(new URL(`/`, req.url));
+    } else if (session && path === "/account-verification") {
+      return NextResponse.redirect(new URL(`/home`, req.url));
+    }
+
     return NextResponse.rewrite(
-      new URL(`/dashboard${path === "/" ? "" : path}`, req.url)
+      new URL(`/app${path === "/" ? "" : path}`, req.url)
     );
   }
 
@@ -33,7 +44,7 @@ export default async function middleware(req) {
     hostname === process.env.NEXT_PUBLIC_ROOT_DOMAIN
   ) {
     return NextResponse.rewrite(
-      new URL(`/app${path === "/" ? "" : path}`, req.url)
+      new URL(`/home${path === "/" ? "" : path}`, req.url)
     );
   }
 

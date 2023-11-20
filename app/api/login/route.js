@@ -12,7 +12,10 @@ export async function POST(req) {
   if (email == users[0].email) {
     return NextResponse.json({
       status: 200,
-      user: users[0],
+      id: users[0].id,
+      username: users[0].username,
+      email: users[0].email,
+      password: users[0].password,
     });
   }
   return NextResponse.json({
