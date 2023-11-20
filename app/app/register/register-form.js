@@ -28,7 +28,7 @@ export default function RegisterForm() {
           setEmail("");
           setPassword("");
           setPasswordMatch("");
-          router.push(`/account-verification?token=`);
+          router.push(`/account-verification?token=${res?.token}`);
         } else {
           toast.error("User with this email already exists");
         }
