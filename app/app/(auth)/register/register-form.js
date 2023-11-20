@@ -16,6 +16,7 @@ export default function RegisterForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (passwordLength && passwordMatch === password) {
       setDisabled(true);
       setTimeout(async () => {
@@ -23,12 +24,11 @@ export default function RegisterForm() {
           email,
           password,
         });
-        console.log(res);
         if (res.isRegistered) {
           setEmail("");
           setPassword("");
           setPasswordMatch("");
-          router.push(`/account-verification?token=`);
+          router.push(`/account-verification?token=${res.token}`);
         } else {
           toast.error("User with this email already exists");
         }
