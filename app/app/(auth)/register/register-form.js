@@ -45,25 +45,6 @@ export default function RegisterForm() {
     <form onSubmit={handleSubmit} className="flex flex-col gap-5 mt-5">
       <div className="grid gap-2">
         <label
-          htmlFor="email"
-          className="text-sm font-semibold text-background"
-        >
-          Email
-        </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          required
-          placeholder="Enter your email"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 focus-visible:shadow focus-visible:shadow-blue-400"
-        />
-      </div>
-      <div className="grid gap-2">
-        <label
           htmlFor="username"
           className="text-sm font-semibold text-background"
         >
@@ -81,6 +62,26 @@ export default function RegisterForm() {
           className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 focus-visible:shadow focus-visible:shadow-blue-400"
         />
       </div>
+      <div className="grid gap-2">
+        <label
+          htmlFor="email"
+          className="text-sm font-semibold text-background"
+        >
+          Email
+        </label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          required
+          placeholder="Enter your email"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+          className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 focus-visible:shadow focus-visible:shadow-blue-400"
+        />
+      </div>
+
       <div className="grid gap-2">
         <div className="flex justify-between items-center">
           <label

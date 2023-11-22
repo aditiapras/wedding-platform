@@ -19,10 +19,12 @@ export const authOptions = {
           .then((res) => {
             return res.data;
           });
-        console.log(user);
+
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!user) return null;
         if (!isPasswordValid) return null;
+
+        console.log(`${user.username} is logged in by email`);
 
         return {
           id: user.id,
@@ -33,7 +35,16 @@ export const authOptions = {
     }),
   ],
   callbacks: {
+    async signIn({ user }) {
+      return true;
+    },
     async session({ session }) {
+      const id = await prisma.users.findMany({
+        where: {
+          email: session.user.email,
+        },
+      });
+      session.user.id = id[0].id;
       return session;
     },
     async jwt({ token, user }) {

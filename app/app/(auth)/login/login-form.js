@@ -4,6 +4,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(true);
@@ -25,7 +26,7 @@ export default function LoginForm() {
         });
         setDisabled(false);
         if (res.error) {
-          alert(res.error);
+          toast.error("Invalid credentials");
           return;
         }
         router.push(`http://dashboard.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`);
@@ -89,7 +90,7 @@ export default function LoginForm() {
       </a>
       <button
         type="submit"
-        className="rounded-md text-sm px-4 py-2 bg-zinc-600 text-white font-medium hover:bg-zinc-700 disabled:opacity-70 disabled:cursor-not-allowed"
+        className="rounded-md text-sm px-4 py-2 bg-zinc-600 text-white font-medium hover:bg-zinc-700 disabled:bg-zinc-600/30 disabled:hover:bg-zinc-600/30 disabled:cursor-not-allowed"
         disabled={disabled}
       >
         {disabled ? "Signing in..." : "Sign in"}

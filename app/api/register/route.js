@@ -2,14 +2,18 @@ import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import ShortUniqueId from "short-unique-id";
 import bcrypt from "bcrypt";
+import axios from "axios";
 
+const jwt = require("jsonwebtoken");
 const uid = new ShortUniqueId();
 const prisma = new PrismaClient();
 
 export async function POST(req) {
   const { username, password, email } = await req.json();
   const uidWithTimestamp = uid.stamp(32);
-  const token = uid.rnd(32);
+  const token = jwt.sign({ username, email }, process.env.JWT_SECRET, {
+    expiresIn: "15m",
+  });
   const hashedPassword = await bcrypt.hash(password, 10);
   try {
     const userExist = await prisma.users.findMany({
@@ -40,6 +44,14 @@ export async function POST(req) {
         },
       },
     });
+    const sendEmail = await axios.post(
+      `${process.env.NEXTAUTH_URL}/api/emails`,
+      {
+        email,
+        username,
+        token,
+      }
+    );
     return NextResponse.json({
       status: 200,
       message: "User created successfully",

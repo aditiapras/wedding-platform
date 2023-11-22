@@ -3,7 +3,7 @@ import RegisterForm from "./register-form";
 export default function Page() {
   return (
     <main className="flex flex-col min-h-screen items-center justify-center bg-foreground">
-      <section className="flex w-1/2 items-center justify-center">
+      <section className="flex w-1/2 items-center justify-center gap-5">
         <div className="w-1/2 flex flex-col gap-5">
           <div className="flex flex-col">
             <p className="text-2xl font-semibold text-background">Sign up</p>
@@ -31,7 +31,10 @@ export default function Page() {
             Copyright &copy; 2023, <a href="">Lettre.id</a>
           </p>
         </div>
-        <div className="w-1/2 flex items-center justify-center"></div>
+        <div className="w-1/2 h-full flex flex-col items-end">
+          <p className="text-3xl font-medium text-background">welcome to</p>
+          <p className="text-3xl font-medium text-background">lettre.id</p>
+        </div>
       </section>
     </main>
   );

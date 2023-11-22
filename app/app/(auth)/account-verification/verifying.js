@@ -2,15 +2,22 @@
 import { verifyAccount } from "@/lib/actions";
 import { LoaderIcon } from "lucide-react";
 import { useEffect, useState } from "react";
-const jwt = require("jsonwebtoken");
+import { Button } from "@/components/ui/button";
 
 export default function Verifying({ token }) {
   const [loading, setLoading] = useState(true);
   const [isVerified, setIsVerified] = useState(false);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      const res = verifyAccount(token);
+    setTimeout(async () => {
+      const res = await verifyAccount(token);
+
+      if (res.isVerified) {
+        setIsVerified(true);
+      } else {
+        setShow(true);
+      }
       setLoading(false);
     }, 5000);
   }, []);
@@ -29,6 +36,22 @@ export default function Verifying({ token }) {
           </>
         ) : (
           ""
+        )}
+
+        {isVerified && (
+          <p>Your account has been successfully verified. You can now login</p>
+        )}
+
+        {show && (
+          <div className="flex flex-col gap-3 items-center">
+            <p>
+              Seems like your token is invalid. Resend email verification by
+              clicking the button below
+            </p>
+            <button className="rounded-md text-sm px-4 py-2 bg-blue-700 text-white font-medium hover:bg-blue-700/80 w-fit">
+              Resend email
+            </button>
+          </div>
         )}
       </div>
     </div>
