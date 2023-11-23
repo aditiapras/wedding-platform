@@ -59,7 +59,7 @@ export default function RegisterForm() {
           onChange={(e) => {
             setUsername(e.target.value);
           }}
-          className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 focus-visible:shadow focus-visible:shadow-blue-400"
+          className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500 focus-visible:shadow focus-visible:shadow-indigo-400"
         />
       </div>
       <div className="grid gap-2">
@@ -78,7 +78,7 @@ export default function RegisterForm() {
           onChange={(e) => {
             setEmail(e.target.value);
           }}
-          className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 focus-visible:shadow focus-visible:shadow-blue-400"
+          className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500 focus-visible:shadow focus-visible:shadow-indigo-400"
         />
       </div>
 
@@ -108,7 +108,7 @@ export default function RegisterForm() {
             setPassword(e.target.value);
             setPasswordLength(e.target.value.length >= 8);
           }}
-          className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 focus-visible:shadow focus-visible:shadow-blue-400"
+          className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500 focus-visible:shadow focus-visible:shadow-indigo-400"
         />
         {!passwordLength && password != "" && (
           <p className="text-red-400 text-xs">
@@ -130,7 +130,7 @@ export default function RegisterForm() {
           required
           placeholder="Enter password confirmation"
           onChange={(e) => setPasswordMatch(e.target.value)}
-          className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 focus-visible:shadow focus-visible:shadow-blue-400"
+          className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500 focus-visible:shadow focus-visible:shadow-indigo-400"
         />
         {passwordMatch != password && passwordMatch != "" && (
           <p className="text-red-400 text-xs">Password did not match</p>
@@ -140,7 +140,7 @@ export default function RegisterForm() {
       <button
         type="submit"
         disabled={disabled}
-        className="rounded-md text-sm px-4 py-2 bg-zinc-600 text-white font-medium hover:bg-zinc-700 mt-5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="rounded-md text-sm px-4 py-2 bg-indigo-600 text-white font-medium hover:bg-indigo-700 mt-5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {disabled ? "Creating your account" : "Create account"}
       </button>

@@ -53,7 +53,7 @@ export default function LoginForm() {
           onChange={(e) => setEmail(e.target.value)}
           required
           placeholder="Enter your email"
-          className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 focus-visible:shadow focus-visible:shadow-blue-400"
+          className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500 focus-visible:shadow focus-visible:shadow-indigo-400"
         />
       </div>
       <div className="grid gap-2">
@@ -79,18 +79,18 @@ export default function LoginForm() {
           onChange={(e) => setPassword(e.target.value)}
           required
           placeholder="Enter your password"
-          className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 focus-visible:shadow focus-visible:shadow-blue-400"
+          className="rounded-md text-sm px-4 py-2 border border-zinc-700 bg-zinc-800 text-white focus:bg-zinc-950 focus:border-zinc-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500 focus-visible:shadow focus-visible:shadow-indigo-400"
         />
       </div>
       <a
         href="/forgot-password"
-        className="text-sm text-zinc-400 hover:underline w-fit hover:text-blue-400"
+        className="text-sm text-zinc-400 hover:underline w-fit hover:text-indigo-400"
       >
         Forgot password?
       </a>
       <button
         type="submit"
-        className="rounded-md text-sm px-4 py-2 bg-zinc-600 text-white font-medium hover:bg-zinc-700 disabled:bg-zinc-600/30 disabled:hover:bg-zinc-600/30 disabled:cursor-not-allowed"
+        className="rounded-md text-sm px-4 py-2 bg-indigo-600 text-white font-medium hover:bg-indigo-700 disabled:bg-indigo-600/30 disabled:hover:bg-indigo-600/30 disabled:cursor-not-allowed"
         disabled={disabled}
       >
         {disabled ? "Signing in..." : "Sign in"}

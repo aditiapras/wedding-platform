@@ -1,15 +1,17 @@
 import RegisterForm from "./register-form";
+import Image from "next/image";
+import logo from "../../../../public/L.png";
 
 export default function Page() {
   return (
     <main className="flex flex-col min-h-screen items-center justify-center bg-foreground">
-      <section className="flex w-1/2 items-center justify-center gap-5">
-        <div className="w-1/2 flex flex-col gap-5">
+      <section className="flex lg:flex-row flex-col-reverse w-full md:w-2/3 xl:w-1/2 items-center justify-center px-10 lg:px-0">
+        <div className="w-full lg:w-1/2 flex flex-col gap-5">
           <div className="flex flex-col">
             <p className="text-2xl font-semibold text-background">Sign up</p>
             <p className="text-sm text-zinc-400">
               Already have an account?{" "}
-              <a href="/login" className="text-blue-400 hover:underline">
+              <a href="/login" className="text-indigo-400 hover:underline">
                 Sign in here.
               </a>
             </p>
@@ -31,9 +33,10 @@ export default function Page() {
             Copyright &copy; 2023, <a href="">Lettre.id</a>
           </p>
         </div>
-        <div className="w-1/2 h-full flex flex-col items-end">
-          <p className="text-3xl font-medium text-background">welcome to</p>
-          <p className="text-3xl font-medium text-background">lettre.id</p>
+        <div className="w-full lg:w-1/2 flex flex-col gap-2 lg:items-end lg:justify-end mb-5 lg:mb-0">
+          <div className="w-10 h-10 lg:w-52 lg:h-52">
+            <Image src={logo} alt="logo" width={500} height={500} />
+          </div>
         </div>
       </section>
     </main>
