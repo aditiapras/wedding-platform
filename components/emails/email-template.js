@@ -23,9 +23,8 @@ export default function EmailTemplate({ firstname, token }) {
             Welcome to lettre.id. Thank you for signing up at lettre.id, one
             more step before you can start using your account.
           </Text>
-          <Text className="text-xs">
-            <strong>Please do note</strong> that this link will expire in 15
-            minutes.
+          <Text className="text-zinc-400 text-sm">
+            Click the button below to verify your account.
           </Text>
           <Container className="flex w-full items-center justify-center mx-auto">
             <Button
@@ -35,8 +34,9 @@ export default function EmailTemplate({ firstname, token }) {
               Verify account
             </Button>
           </Container>
-          <Text className="text-zinc-400 text-sm">
-            Click the button below to verify your account.
+          <Text className="text-xs">
+            <strong>Please do note</strong> that this link will expire in 15
+            minutes.
           </Text>
           {/* <Hr className="border-zinc-400 text-zinc-400 mt-10" /> */}
         </Container>

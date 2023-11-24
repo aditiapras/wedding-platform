@@ -2,7 +2,6 @@
 import { verifyAccount } from "@/lib/actions";
 import { LoaderIcon } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
 
 export default function Verifying({ token }) {
   const [loading, setLoading] = useState(true);
@@ -39,7 +38,17 @@ export default function Verifying({ token }) {
         )}
 
         {isVerified && (
-          <p>Your account has been successfully verified. You can now login</p>
+          <div className="flex flex-col gap-5 items-center">
+            <p>
+              Your account has been successfully verified. You can now login
+            </p>
+            <a
+              href={"/login"}
+              className="rounded-md text-sm px-4 py-2 bg-indigo-700 text-white font-medium hover:bg-indigo-700/80 w-fit"
+            >
+              Go to login page
+            </a>
+          </div>
         )}
 
         {show && (
@@ -48,7 +57,7 @@ export default function Verifying({ token }) {
               Seems like your token is invalid. Resend email verification by
               clicking the button below
             </p>
-            <button className="rounded-md text-sm px-4 py-2 bg-blue-700 text-white font-medium hover:bg-blue-700/80 w-fit">
+            <button className="rounded-md text-sm px-4 py-2 bg-indigo-700 text-white font-medium hover:bg-indigo-700/80 w-fit">
               Resend email
             </button>
           </div>

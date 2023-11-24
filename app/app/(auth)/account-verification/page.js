@@ -2,6 +2,7 @@ import Verifying from "./verifying";
 
 export default function AccountVerify({ searchParams }) {
   const token = searchParams.token;
+  const section = searchParams.section;
 
   return (
     <main className="flex flex-col min-h-screen items-center justify-center bg-foreground">

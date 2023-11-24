@@ -8,6 +8,9 @@ export async function POST(req) {
     where: {
       email,
     },
+    include: {
+      Auth: true,
+    },
   });
   if (email == users[0].email) {
     return NextResponse.json({
@@ -16,6 +19,7 @@ export async function POST(req) {
       username: users[0].username,
       email: users[0].email,
       password: users[0].password,
+      isVerified: users[0].Auth.isVerified,
     });
   }
   return NextResponse.json({
