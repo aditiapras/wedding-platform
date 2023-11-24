@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   AlertDialog,
@@ -14,10 +15,11 @@ import { ExternalLink, Loader2 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../../public/L.png";
+import { toast } from "sonner";
 
-export default async function Page() {
+export default function Page() {
   return (
-    <main className="w-full md:w-4/5 lg:w-3/4 mx-auto flex-col px-5 md:px-0 py-10 flex">
+    <main className="relative w-full md:w-4/5 lg:w-3/4 mx-auto flex-col px-5 md:px-0 py-10 flex">
       <p className="text-xl font-medium">Overview</p>
       <p className="text-3xl font-medium mt-10">Welcome, User</p>
       <div className="w-full grid lg:grid-cols-2 gap-5 mt-5">
@@ -66,7 +68,13 @@ export default async function Page() {
                   <div className="flex gap-1 items-center">
                     <Loader2 className="w-3 animate-spin text-indigo-500" />
                     <p className="text-xs text-indigo-500">Checking domain</p>
+                    <p className="text-xs text-indigo-500">
+                      Once its done, it cannot be changed
+                    </p>
                   </div>
+                  <p className="text-xs text-red-500">
+                    This domain is already taken
+                  </p>
                 </div>
                 <div className="grid gap-1 text-sm">
                   <label htmlFor="" className="font-medium">
@@ -112,7 +120,12 @@ export default async function Page() {
                     </Button>
                   </AlertDialogCancel>
                   <AlertDialogAction asChild>
-                    <Button className="w-fit bg-indigo-500 hover:bg-indigo-500/90 mt-0">
+                    <Button
+                      className="w-fit bg-indigo-500 hover:bg-indigo-500/90 mt-0"
+                      onClick={() => {
+                        toast("Creating Invitation...");
+                      }}
+                    >
                       Create Invitation
                     </Button>
                   </AlertDialogAction>

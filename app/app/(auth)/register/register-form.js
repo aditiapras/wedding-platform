@@ -73,6 +73,7 @@ export default function RegisterForm() {
           type="email"
           name="email"
           id="email"
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           required
           placeholder="Enter your email"
           onChange={(e) => {
@@ -103,6 +104,8 @@ export default function RegisterForm() {
           name="password"
           id="password"
           required
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+          title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
           placeholder="Enter password"
           onChange={(e) => {
             setPassword(e.target.value);

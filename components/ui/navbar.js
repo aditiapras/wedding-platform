@@ -62,19 +62,19 @@ export default function Navbar({ session }) {
                 </p>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuItem className="focus:bg-indigo-100 focus:text-indigo-500">
                 <div className="flex items-center justify-between w-full">
                   Settings
                   <UserCog2 className="w-4" />
                 </div>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem className="focus:bg-indigo-100 focus:text-indigo-500">
                 <div className="flex items-center justify-between w-full">
                   Subscriptions
                   <CreditCard className="w-4" />
                 </div>
               </DropdownMenuItem>
-              <DropdownMenuItem className="focus:bg-indigo-200 focus:text-indigo-500">
+              <DropdownMenuItem className="focus:bg-indigo-100 focus:text-indigo-500">
                 <button
                   onClick={() => signOut()}
                   className="flex items-center justify-between w-full"
